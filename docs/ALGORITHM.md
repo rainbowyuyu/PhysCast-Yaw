@@ -15,7 +15,7 @@ A scene contains turbine positions, a homogeneous turbine specification, ambient
 | $U_\infty,I$ | Ambient speed and turbulence intensity | m/s, fraction |
 | $\alpha$ | Meteorological direction **from** which wind arrives | degrees clockwise from north |
 | $\psi_i$ | Absolute upwind nacelle heading | same angular convention as $\alpha$ |
-| $\gamma_i$ | Yaw misalignment | $\operatorname{wrap}_{180}(\alpha-\psi_i)$ |
+| $\gamma_i$ | Yaw misalignment | $\mathrm{wrap}_{180}(\alpha-\psi_i)$ |
 | $U_i,P_i$ | Rotor-effective speed and power | m/s, kW |
 
 Positive yaw rotates the upwind nacelle axis counterclockwise relative to the incoming wind, hence $\psi_i=\alpha-\gamma_i$. The streamwise and cross-stream basis vectors are
@@ -45,14 +45,14 @@ $$
 $$
 
 $$
-A_j=1-\sqrt{\operatorname{clip}\left(
+A_j=1-\sqrt{\mathrm{clip}\left(
 1-\frac{C_T(U_j)\cos^2\gamma_j}{8(\sigma_j/D)^2},0.02,1\right)}.
 $$
 
 Deficits are zero for $\Delta x\leq0.1D$. Turbines are processed from upstream to downstream, so $U_j$ includes upstream wake effects. Multiple wakes combine through root-sum-square deficits:
 
 $$
-u(\mathbf{x})=\operatorname{clip}\left(
+u(\mathbf{x})=\mathrm{clip}\left(
 U_\infty-\sqrt{\sum_j\Delta U_j(\mathbf{x})^2},0,U_\infty\right).
 $$
 
@@ -75,7 +75,7 @@ For the generic turbine, $P_r=5000$ kW, $U_{ci}=3$ m/s, $U_r=11.4$ m/s, $U_{co}=
 
 $$
 P(U,\gamma)=\begin{cases}
-P_r\operatorname{clip}\left(\dfrac{U^3-U_{ci}^3}{U_r^3-U_{ci}^3},0,1\right)
+P_r\mathrm{clip}\left(\dfrac{U^3-U_{ci}^3}{U_r^3-U_{ci}^3},0,1\right)
 \max(\cos\gamma,0)^p,& U_{ci}\leq U<U_{co},\\
 0,&\text{otherwise}.
 \end{cases}
@@ -109,7 +109,7 @@ where $d_{ji}=\Delta x_{ji}/D$ and $\ell_{ji}=\Delta y_{ji}/D$. The 16 features 
 Each feature is standardized using **training observations only**, with a standard-deviation floor of 0.02. Each mean network is an MLP, $16\to64\to64\to1$, with SiLU activations. Its output is
 
 $$
-\hat b_i^{(m)}=\operatorname{clip}\left[
+\hat b_i^{(m)}=\mathrm{clip}\left[
 b_i+0.8(1-b_i)\tanh f_{\theta_m}(\mathbf{c}_i),0,1\right],
 \quad
 \bar b_i=\frac{1}{M}\sum_{m=1}^{M}\hat b_i^{(m)}.
@@ -131,7 +131,7 @@ After freezing the selected mean ensemble, normalized residual labels are
 
 $$
 z_{0,i}=\frac{y_i-\bar b_i}{s_r},\qquad
-s_r=\max\left[\operatorname{Std}_{train}(y-\bar b),0.003\right].
+s_r=\max\left[\mathrm{Std}_{train}(y-\bar b),0.003\right].
 $$
 
 The forward diffusion and denoising loss are
@@ -151,7 +151,7 @@ There are 32 diffusion steps. The cosine cumulative schedule uses offset 0.008; 
 At reverse sampling, the predicted clean residual is clipped to $[-6,6]$ and inserted into the exact Gaussian DDPM posterior:
 
 $$
-\hat z_0=\operatorname{clip}\left(
+\hat z_0=\mathrm{clip}\left(
 \frac{z_t-\sqrt{1-\bar a_t}\epsilon_\phi}{\sqrt{\bar a_t}},-6,6\right),
 $$
 
@@ -162,7 +162,7 @@ $$
 \tilde\beta_t=\beta_t\frac{1-\bar a_{t-1}}{1-\bar a_t}.
 $$
 
-Samples are mapped back by $\tilde b_i=\operatorname{clip}(\bar b_i+s_r\tilde z_{0,i},0,1)$. Default diffusion training uses 1,200 AdamW updates at $10^{-3}$, with validation every 100 updates and a fixed validation noise/time sample. The best validation denoising loss selects the checkpoint.
+Samples are mapped back by $\tilde b_i=\mathrm{clip}(\bar b_i+s_r\tilde z_{0,i},0,1)$. Default diffusion training uses 1,200 AdamW updates at $10^{-3}$, with validation every 100 updates and a fixed validation noise/time sample. The best validation denoising loss selects the checkpoint.
 
 Samples are independent **marginal rotor-speed residuals**, including the synthetic observation noise. They are not a joint farm realization or a time trajectory. The sampled distribution is separate from ensemble disagreement used by the controller.
 
@@ -201,8 +201,8 @@ $$
 Defaults: $\lambda_r=0.1$, $\lambda_m=0.002$, $\lambda_l=0.002$. The disagreement proxy is
 
 $$
-d_{i,s}=\frac{P(\operatorname{clip}(\bar b_i+\sigma_{b_i},0,1)U_\infty,\gamma_{i,s})
--P(\operatorname{clip}(\bar b_i-\sigma_{b_i},0,1)U_\infty,\gamma_{i,s})}{2}.
+d_{i,s}=\frac{P(\mathrm{clip}(\bar b_i+\sigma_{b_i},0,1)U_\infty,\gamma_{i,s})
+-P(\mathrm{clip}(\bar b_i-\sigma_{b_i},0,1)U_\infty,\gamma_{i,s})}{2}.
 $$
 
 Here $\sigma_{b_i}$ is the population standard deviation across mean-network predictions. Summed power differences are a heuristic disagreement penalty, not farm-power standard deviation. The final term is a side-force proxy, not fatigue damage or a structural load prediction.
