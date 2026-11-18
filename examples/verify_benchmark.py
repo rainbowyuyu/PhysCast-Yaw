@@ -31,8 +31,10 @@ def main():
         energy = sum(float(row['energy_kwh']) for row in selected)
         movement = sum(float(row['movement_deg']) for row in selected)
         gain = 100 * (energy / summary['aligned']['energy_kwh'] - 1)
+        # Python versions can differ in summation rounding, including near zero gain.
         np.testing.assert_allclose([energy, movement, gain], [values['energy_kwh'],
-                                   values['total_heading_travel_deg'], values['gain_vs_alignment_pct']])
+                                   values['total_heading_travel_deg'], values['gain_vs_alignment_pct']],
+                                   rtol=1e-10, atol=1e-10)
         assert sum(row['source'] == 'physics_fallback' for row in selected) == values['fallback_steps']
         assert sum(row['status'] == 'infeasible' for row in selected) == values['infeasible_steps']
     hashes = json.loads((folder / 'checksums.json').read_text(encoding='utf-8'))
