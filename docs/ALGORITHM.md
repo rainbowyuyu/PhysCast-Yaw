@@ -20,10 +20,10 @@ A scene contains turbine positions, a homogeneous turbine specification, ambient
 
 Positive yaw rotates the upwind nacelle axis counterclockwise relative to the incoming wind, hence $\psi_i=\alpha-\gamma_i$. The streamwise and cross-stream basis vectors are
 
-$$
+```math
 \mathbf{e}_x=(-\sin\alpha,-\cos\alpha),\qquad
 \mathbf{e}_y=(-e_{x,y},e_{x,x}).
-$$
+```
 
 Angles passed to trigonometric functions are converted to radians. At $\alpha=270^\circ$, flow travels east. The code supports 1–24 turbines with at least $3D$ spacing. See [`config.py`](../src/physcast_yaw/config.py) and `GaussianWake.coordinates` in [`physics.py`](../src/physcast_yaw/physics.py).
 
@@ -31,36 +31,36 @@ Angles passed to trigonometric functions are converted to radians. At $\alpha=27
 
 For a downstream point relative to turbine $j$, define $s=\max(\Delta x/D,0)$. The Gaussian width and lateral centre are
 
-$$
+```math
 \sigma_j=D\left[0.27+(k_0+k_I I)s\right],\qquad
 \delta_j=\frac{k_\delta\sin\gamma_j\max(\Delta x,0)}{1+0.03s}.
-$$
+```
 
 The speed deficit is
 
-$$
+```math
 \Delta U_j=U_j A_j
 \exp\left[-\frac{1}{2}\left(\frac{(\Delta y-\delta_j)^2}{\sigma_j^2}
 +\frac{\Delta z^2}{\sigma_j^2}\right)\right],
-$$
+```
 
-$$
+```math
 A_j=1-\sqrt{\mathrm{clip}\left(
 1-\frac{C_T(U_j)\cos^2\gamma_j}{8(\sigma_j/D)^2},0.02,1\right)}.
-$$
+```
 
 Deficits are zero for $\Delta x\leq0.1D$. Turbines are processed from upstream to downstream, so $U_j$ includes upstream wake effects. Multiple wakes combine through root-sum-square deficits:
 
-$$
+```math
 u(\mathbf{x})=\mathrm{clip}\left(
 U_\infty-\sqrt{\sum_j\Delta U_j(\mathbf{x})^2},0,U_\infty\right).
-$$
+```
 
 Nine rotor points approximate effective inflow. The centre has weight 0.2 and eight equally spaced ring points at radius $0.375D$ each have weight 0.1:
 
-$$
+```math
 U_i=\left(\sum_{q=1}^{9}w_q u_{iq}^3\right)^{1/3}.
-$$
+```
 
 | Closure | $k_0$ | $k_I$ | $k_\delta$ |
 |---|---:|---:|---:|
@@ -73,20 +73,20 @@ These are explicit demonstration parameters. The implementation uses a simplifie
 
 For the generic turbine, $P_r=5000$ kW, $U_{ci}=3$ m/s, $U_r=11.4$ m/s, $U_{co}=25$ m/s, and $p=1.88$:
 
-$$
+```math
 P(U,\gamma)=\begin{cases}
 P_r\mathrm{clip}\left(\dfrac{U^3-U_{ci}^3}{U_r^3-U_{ci}^3},0,1\right)
 \max(\cos\gamma,0)^p,& U_{ci}\leq U<U_{co},\\
 0,&\text{otherwise}.
 \end{cases}
-$$
+```
 
-$$
+```math
 C_T(U)=\begin{cases}
 0.8\min\left(1,\left(\dfrac{U_r}{\max(U,0.1)}\right)^2\right),& U_{ci}\leq U<U_{co},\\
 0,&\text{otherwise}.
 \end{cases}
-$$
+```
 
 This power curve is continuous at rated speed and applies a cosine yaw loss even above rated speed. Real turbines require appropriate controller-dependent power and thrust curves. See `Turbine.power` and `Turbine.thrust_coefficient`.
 
@@ -94,10 +94,10 @@ This power curve is continuous at rated speed and applies a cosine yaw loss even
 
 The same network is applied to every turbine. No absolute position or turbine ID enters the network. Features use streamwise geometry in rotor-diameter units and aggregated upstream context:
 
-$$
+```math
 r_{ji}=\mathbf{1}_{d_{ji}>0.1}
 \frac{\exp[-\tfrac12(\ell_{ji}/1.5)^2]}{1+\max(d_{ji},0)/6},
-$$
+```
 
 where $d_{ji}=\Delta x_{ji}/D$ and $\ell_{ji}=\Delta y_{ji}/D$. The 16 features are:
 
@@ -108,20 +108,20 @@ where $d_{ji}=\Delta x_{ji}/D$ and $\ell_{ji}=\Delta y_{ji}/D$. The 16 features 
 
 Each feature is standardized using **training observations only**, with a standard-deviation floor of 0.02. Each mean network is an MLP, $16\to64\to64\to1$, with SiLU activations. Its output is
 
-$$
+```math
 \hat b_i^{(m)}=\mathrm{clip}\left[
 b_i+0.8(1-b_i)\tanh f_{\theta_m}(\mathbf{c}_i),0,1\right],
 \quad
 \bar b_i=\frac{1}{M}\sum_{m=1}^{M}\hat b_i^{(m)}.
-$$
+```
 
 The correction is at most 80% of the prior deficit. It vanishes if $b_i=1$: this closure cannot learn a wake completely missed by the prior. Bounds represent the flat, wake-deficit setting; they do not represent terrain-induced speed-up.
 
 The loss is pooled speed-ratio MSE:
 
-$$
+```math
 \mathcal{L}_{mean}=\frac{1}{N_{obs}}\sum_i(\hat b_i-y_i)^2.
-$$
+```
 
 Default training uses three initialization seeds, AdamW at $2\times10^{-3}$, weight decay $10^{-4}$, batches of 1,024, gradient norm clipping at 1, at most 100 epochs, and patience 20. The lowest validation MSE selects each member. Members share the dataset; this is an initialization ensemble, not bootstrap training. Pooling means layouts with more observations carry more weight.
 
@@ -129,38 +129,38 @@ Default training uses three initialization seeds, AdamW at $2\times10^{-3}$, wei
 
 After freezing the selected mean ensemble, normalized residual labels are
 
-$$
+```math
 z_{0,i}=\frac{y_i-\bar b_i}{s_r},\qquad
 s_r=\max\left[\mathrm{Std}_{train}(y-\bar b),0.003\right].
-$$
+```
 
 The forward diffusion and denoising loss are
 
-$$
+```math
 z_t=\sqrt{\bar a_t}z_0+\sqrt{1-\bar a_t}\epsilon,
 \quad\epsilon\sim\mathcal{N}(0,1),
-$$
+```
 
-$$
+```math
 \mathcal{L}_{diff}=\mathbb{E}_{i,t,\epsilon}
 \left[\left(\epsilon-\epsilon_\phi(z_t,t,\mathbf{c}_i)\right)^2\right].
-$$
+```
 
 There are 32 diffusion steps. The cosine cumulative schedule uses offset 0.008; derived $\beta_t$ values are clipped to $[0.0001,0.999]$. The denoiser receives 16 conditions, the residual, and three time features $(t,\sin\pi t,\cos\pi t)$, with two 64-unit SiLU layers.
 
 At reverse sampling, the predicted clean residual is clipped to $[-6,6]$ and inserted into the exact Gaussian DDPM posterior:
 
-$$
+```math
 \hat z_0=\mathrm{clip}\left(
 \frac{z_t-\sqrt{1-\bar a_t}\epsilon_\phi}{\sqrt{\bar a_t}},-6,6\right),
-$$
+```
 
-$$
+```math
 \mu_t=\frac{\beta_t\sqrt{\bar a_{t-1}}}{1-\bar a_t}\hat z_0
 +\frac{(1-\bar a_{t-1})\sqrt{1-\beta_t}}{1-\bar a_t}z_t,
 \qquad
 \tilde\beta_t=\beta_t\frac{1-\bar a_{t-1}}{1-\bar a_t}.
-$$
+```
 
 Samples are mapped back by $\tilde b_i=\mathrm{clip}(\bar b_i+s_r\tilde z_{0,i},0,1)$. Default diffusion training uses 1,200 AdamW updates at $10^{-3}$, with validation every 100 updates and a fixed validation noise/time sample. The best validation denoising loss selects the checkpoint.
 
@@ -170,9 +170,9 @@ Samples are independent **marginal rotor-speed residuals**, including the synthe
 
 For each calibration observation, calculate the sample 5th and 95th percentiles $(l_i,h_i)$ and
 
-$$
+```math
 s_i=\max(l_i-y_i,y_i-h_i,0).
-$$
+```
 
 Let $q$ be the ordered score at rank $\min(n,\lceil0.9(n+1)\rceil)$. Report $[\max(0,l_i-q),\min(1,h_i+q)]$. Calibration layouts are separate from training and test layouts. Observations within a layout are dependent, so 90% is an empirical coverage target, not a guaranteed simultaneous farm or trajectory bound.
 
@@ -180,30 +180,30 @@ Let $q$ be the ordered score at rank $\min(n,\lceil0.9(n+1)\rceil)$. Report $[\m
 
 For direction standard deviation $\sigma_\alpha$, approximate a Gaussian expectation with three points:
 
-$$
+```math
 (\Delta\alpha_s,w_s)=
 \left\{(-\sqrt3\sigma_\alpha,\tfrac16),(0,\tfrac23),
 (+\sqrt3\sigma_\alpha,\tfrac16)\right\}.
-$$
+```
 
 The **same nacelle headings** are used in all scenarios, so
 $\gamma_{i,s}=\gamma_i+\Delta\alpha_s$ and $\alpha_s=\alpha+\Delta\alpha_s$.
 
 Let $P_{ref}=\max[N P(U_\infty,0),1\text{ kW}]$. The objective is
 
-$$
+```math
 J(\boldsymbol\gamma)=
 \frac{\sum_s w_s\sum_i\hat P_{i,s}-\lambda_r\sum_s w_s\sum_i d_{i,s}}{P_{ref}}
 -\lambda_m\frac1N\sum_i\left(\frac{\gamma_i-\gamma_i^{current}}{\gamma_{max}}\right)^2
 -\lambda_l\frac1N\sum_i\sin^2\gamma_i.
-$$
+```
 
 Defaults: $\lambda_r=0.1$, $\lambda_m=0.002$, $\lambda_l=0.002$. The disagreement proxy is
 
-$$
+```math
 d_{i,s}=\frac{P(\mathrm{clip}(\bar b_i+\sigma_{b_i},0,1)U_\infty,\gamma_{i,s})
 -P(\mathrm{clip}(\bar b_i-\sigma_{b_i},0,1)U_\infty,\gamma_{i,s})}{2}.
-$$
+```
 
 Here $\sigma_{b_i}$ is the population standard deviation across mean-network predictions. Summed power differences are a heuristic disagreement penalty, not farm-power standard deviation. The final term is a side-force proxy, not fatigue damage or a structural load prediction.
 
@@ -211,10 +211,10 @@ Here $\sigma_{b_i}$ is the population standard deviation across mean-network pre
 
 With nominal angle limit $\gamma_{max}=30^\circ$, yaw rate $r_{max}=0.3^\circ/s$, and interval $\Delta t=120$ s, each feasible yaw lies in
 
-$$
+```math
 [-\gamma_{max},\gamma_{max}]
 \cap[\gamma_i^{current}-r_{max}\Delta t,\gamma_i^{current}+r_{max}\Delta t].
-$$
+```
 
 The rate limit applies to absolute nacelle motion, including when the wind changes direction. Angle limits apply at the **nominal** direction; scenario misalignments can exceed them. With default direction uncertainty, a $30^\circ$ nominal yaw can be $33.46^\circ$ in a scenario.
 
@@ -230,10 +230,10 @@ This is a deterministic seeded search, not a global optimality guarantee. Empty 
 
 The model requires the saved turbine specification and no more turbines than the maximum count in its training layouts. For each feature, its support interval is
 
-$$
+```math
 [x_{min}-\eta,x_{max}+\eta],\quad
 \eta=0.15\max(x_{max}-x_{min},0.01).
-$$
+```
 
 This expanded coordinate-wise box allows limited extrapolation and does not detect every unusual combination. Direct prediction flags/falls back per scene, independently of other scenes in the batch. The controller rejects individual unsupported actions before inference. Returned `source`, `reason`, and rejection counts make the path visible.
 
@@ -241,10 +241,10 @@ This expanded coordinate-wise box allows limited extrapolation and does not dete
 
 Alignment, physics control, and AI control each maintain independent heading states and receive the same wind sequence. A fixed synthetic teacher evaluates all actions. For each interval:
 
-$$
+```math
 E_k=P_{farm,k}\Delta t/3600\quad[\mathrm{kWh}],\qquad
 G=100\left(\frac{\sum_k E_k^{method}}{\sum_k E_k^{alignment}}-1\right).
-$$
+```
 
 This is a sequence of steady operating points. The model does not integrate wake advection, actuator travel power, or fatigue. Replay rejects plant misalignment beyond $60^\circ$. Prediction evaluation separately measures RMSE, MAE, bias, Pearson correlation, interval coverage and width. The [validation record](VALIDATION.md) gives all measured results.
 
