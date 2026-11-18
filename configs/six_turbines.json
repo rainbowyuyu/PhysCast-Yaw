@@ -1,0 +1,5 @@
+{
+  "farm": {"xy_m": [[0, 0], [756, 0], [1512, 0], [100, 630], [856, 630], [1612, 630]]},
+  "wind": {"speed_ms": 8.5, "direction_deg": 270, "turbulence_intensity": 0.1},
+  "controller": {"yaw_limit_deg": 30, "yaw_rate_deg_s": 0.3, "interval_s": 120, "direction_std_deg": 2, "seed": 42}
+}

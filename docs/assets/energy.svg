@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="656.39952pt" height="332.39952pt" viewBox="0 0 656.39952 332.39952" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-18T12:47:07.646647</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 332.39952
+L 656.39952 332.39952
+L 656.39952 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 53.650781 293.197556
+L 649.19952 293.197556
+L 649.19952 24.597656
+L 53.650781 24.597656
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 80.721178 293.197556
+L 197.495441 293.197556
+L 197.495441 86.624227
+L 80.721178 86.624227
+z
+" clip-path="url(#p7fe24ad631)" style="fill: #8293a5"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 293.038019 293.197556
+L 409.812282 293.197556
+L 409.812282 79.777987
+L 293.038019 79.777987
+z
+" clip-path="url(#p7fe24ad631)" style="fill: #d88a37"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 505.35486 293.197556
+L 622.129123 293.197556
+L 622.129123 76.584734
+L 505.35486 76.584734
+z
+" clip-path="url(#p7fe24ad631)" style="fill: #008c87"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m1e5b86ea37" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m1e5b86ea37" x="139.10831" y="293.197556" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="139.10831" y="307.795993" transform="rotate(-0 139.10831 307.795993)">Wind alignment</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m1e5b86ea37" x="351.425151" y="293.197556" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="351.425151" y="307.795993" transform="rotate(-0 351.425151 307.795993)">Physics controller</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m1e5b86ea37" x="563.741992" y="293.197556" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="563.741992" y="307.795993" transform="rotate(-0 563.741992 307.795993)">AI controller</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="mbf428196a6" d="M 0 0
+L -3.5 0
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mbf428196a6" x="53.650781" y="293.197556" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="46.650781" y="296.996384" transform="rotate(-0 46.650781 296.996384)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mbf428196a6" x="53.650781" y="239.563963" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="46.650781" y="243.362792" transform="rotate(-0 46.650781 243.362792)">1000</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mbf428196a6" x="53.650781" y="185.930371" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="46.650781" y="189.729199" transform="rotate(-0 46.650781 189.729199)">2000</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mbf428196a6" x="53.650781" y="132.296779" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="46.650781" y="136.095607" transform="rotate(-0 46.650781 136.095607)">3000</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mbf428196a6" x="53.650781" y="78.663187" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="46.650781" y="82.462015" transform="rotate(-0 46.650781 82.462015)">4000</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#mbf428196a6" x="53.650781" y="25.029595" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end" x="46.650781" y="28.828423" transform="rotate(-0 46.650781 28.828423)">5000</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #283e50" x="14.798438" y="158.897606" transform="rotate(-90 14.798438 158.897606)">Quasi-steady energy (kWh)</text>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 53.650781 293.197556
+L 53.650781 24.597656
+" style="fill: none; stroke: #becbd4; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 53.650781 293.197556
+L 649.19952 293.197556
+" style="fill: none; stroke: #becbd4; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #183246" transform="translate(106.006903 69.678426)">3851.6 kWh</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #183246" transform="translate(117.027528 82.880575)">+0.00%</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #183246" transform="translate(318.323744 62.832186)">3979.2 kWh</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #183246" transform="translate(329.344369 76.034334)">+3.31%</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #183246" transform="translate(530.640585 59.638933)">4038.8 kWh</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #183246" transform="translate(541.66121 72.841081)">+4.86%</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183246" x="53.650781" y="18.597656" transform="rotate(-0 53.650781 18.597656)">Identical wind trace · identical evaluation model</text>
+   </g>
+  </g>
+  <g id="text_15">
+   <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183246" x="328.19976" y="323.037411" transform="rotate(-0 328.19976 323.037411)">Engineering demonstration; percentages describe this synthetic trace, not field energy yield.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7fe24ad631">
+   <rect x="53.650781" y="24.597656" width="595.548739" height="268.599899"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="440" viewBox="0 0 1440 440" role="img" aria-labelledby="title desc">
+  <title id="title">PhysCast-Yaw — Physics-guided AI for wake steering</title>
+  <desc id="desc">A light teal wind-farm illustration with three turbines and gently curved wakes beside the project title.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#eef9f7"/><stop offset="1" stop-color="#f8fafc"/></linearGradient>
+    <linearGradient id="wake"><stop stop-color="#008c88" stop-opacity=".24"/><stop offset="1" stop-color="#008c88" stop-opacity="0"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#17374b" opacity=".08"/></pattern>
+    <g id="turbine" fill="none" stroke="#17374b" stroke-width="5" stroke-linecap="round">
+      <path d="M0 0 0 105"/><path d="M0 0 0-42 M0 0 37 22 M0 0-37 22"/>
+      <circle r="5" fill="#008c88" stroke="#008c88"/>
+    </g>
+  </defs>
+  <rect width="1440" height="440" rx="28" fill="url(#bg)"/>
+  <rect x="705" width="735" height="440" rx="28" fill="url(#grid)"/>
+  <rect x="64" y="63" width="244" height="34" rx="17" fill="#d6eeea"/>
+  <text x="82" y="86" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="600" fill="#007b75" letter-spacing="1">PREDICT · STEER · VERIFY</text>
+  <text x="62" y="190" font-family="Segoe UI,Arial,sans-serif" font-weight="750" font-size="76" fill="#17374b">PhysCast-Yaw</text>
+  <text x="66" y="240" font-family="Segoe UI,Arial,sans-serif" font-size="27" fill="#3e5a6d">Physics-guided AI for wind-farm yaw control</text>
+  <text x="66" y="295" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#527083">Wake physics + neural residuals + diffusion uncertainty</text>
+  <path d="M68 338H562" stroke="#bddbd7"/>
+  <text x="66" y="372" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#527083">Open source · Python / PyTorch · Reproducible experiments</text>
+  <path d="M845 185C1010 165 1110 45 1410 45L1410 244C1110 260 1010 210 845 205Z" fill="url(#wake)"/>
+  <path d="M1045 250C1160 250 1250 145 1440 150L1440 360C1260 390 1160 290 1045 270Z" fill="url(#wake)"/>
+  <path d="M1245 188C1320 180 1370 145 1440 145L1440 265C1380 260 1320 218 1245 208Z" fill="url(#wake)"/>
+  <g fill="none" stroke="#008c88" stroke-width="2" opacity=".5">
+    <path d="M849 191C1050 180 1110 105 1390 108"/><path d="M1047 260C1210 260 1260 218 1410 218"/>
+  </g>
+  <path d="M740 363Q1020 392 1390 356" stroke="#bddbd7" stroke-width="2" fill="none"/>
+  <use href="#turbine" transform="translate(845 195)"/>
+  <use href="#turbine" transform="translate(1045 260) scale(.9)"/>
+  <use href="#turbine" transform="translate(1245 198) scale(.76)"/>
+  <g fill="#d98a30"><circle cx="845" cy="195" r="7"/><circle cx="1045" cy="260" r="6"/><circle cx="1245" cy="198" r="5"/></g>
+</svg>

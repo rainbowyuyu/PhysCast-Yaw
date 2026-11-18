@@ -1,0 +1,63 @@
+{
+  "aligned": {
+    "yaw_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "source": "alignment",
+    "evaluated_power_kw": 3660.2486212987674
+  },
+  "physics": {
+    "status": "ok",
+    "reason": "requested_physics_baseline",
+    "yaw_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "heading_deg": [
+      270.0,
+      270.0,
+      270.0
+    ],
+    "movement_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "predicted_power_kw": 4062.1240577064455,
+    "objective": 0.8121701959302495,
+    "source": "physics_prior",
+    "scenario_evaluations": 1455,
+    "rejected_ai_candidates": 0,
+    "max_heading_rate_deg_s": 0.0,
+    "evaluated_power_kw": 3660.2486212987674
+  },
+  "ai": {
+    "status": "ok",
+    "reason": "unsupported_candidates_rejected",
+    "yaw_deg": [
+      25.0,
+      23.60679838187179,
+      1.1315016231869421
+    ],
+    "heading_deg": [
+      245.0,
+      246.39320161812822,
+      268.8684983768131
+    ],
+    "movement_deg": [
+      25.0,
+      23.606798381871783,
+      1.1315016231869208
+    ],
+    "predicted_power_kw": 3828.9704379598174,
+    "objective": 0.7641195947930867,
+    "source": "neural_residual",
+    "scenario_evaluations": 1275,
+    "rejected_ai_candidates": 60,
+    "max_heading_rate_deg_s": 0.20833333333333334,
+    "evaluated_power_kw": 3825.4237468245333
+  }
+}

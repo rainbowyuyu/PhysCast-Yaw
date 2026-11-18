@@ -1,0 +1,39 @@
+{
+  "source": "synthetic_gaussian_teacher",
+  "split": "held_out_layouts",
+  "layout_count": 10,
+  "prior_speed_ms": {
+    "rmse": 0.13370069647103758,
+    "mae": 0.07921412834178394,
+    "bias": 0.05730514141574574,
+    "pearson_r": 0.9976265585774545,
+    "n": 3840
+  },
+  "neural_speed_ms": {
+    "rmse": 0.05325072619129338,
+    "mae": 0.03457182142443558,
+    "bias": 0.007700797836079419,
+    "pearson_r": 0.9995492026042156,
+    "n": 3840
+  },
+  "prior_power_kw": {
+    "rmse": 105.2317206652576,
+    "mae": 55.38384416711547,
+    "bias": 40.56504528504471,
+    "pearson_r": 0.99711052878577,
+    "n": 3840
+  },
+  "neural_power_kw": {
+    "rmse": 42.39998213505507,
+    "mae": 24.31554298858097,
+    "bias": 5.762136309246729,
+    "pearson_r": 0.9994453674743103,
+    "n": 3840
+  },
+  "marginal_90_interval": {
+    "coverage": 0.89453125,
+    "mean_width_ms": 0.12858521023212197,
+    "draws": 64,
+    "note": "Marginal turbine coverage on correlated layout observations; not joint trajectory coverage"
+  }
+}

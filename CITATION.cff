@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite this repository and the commit used in your experiment."
+type: software
+title: "PhysCast-Yaw: Physics-guided AI for wind-farm yaw control"
+authors:
+  - name: "rainbow鱼"
+version: 0.1.0
+date-released: 2026-11-18
+url: "https://github.com/rainbowyuyu/PhysCast-Yaw"
+repository-code: "https://github.com/rainbowyuyu/PhysCast-Yaw"
+license: MIT
+keywords:
+  - wake steering
+  - wind energy
+  - residual learning
+  - diffusion models
+  - yaw control

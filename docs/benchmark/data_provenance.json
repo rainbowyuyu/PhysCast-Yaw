@@ -1,0 +1,123 @@
+{
+  "schema": "physcast-yaw-public-benchmark-v1",
+  "source": "synthetic_gaussian_teacher",
+  "seed": 42,
+  "layouts": 64,
+  "states_per_layout": 64,
+  "farm_states": 4096,
+  "turbine_observations": 20480,
+  "splits": {
+    "train": {
+      "layouts": 38,
+      "turbine_observations": 10944,
+      "layout_ids": [
+        3,
+        4,
+        5,
+        7,
+        9,
+        15,
+        16,
+        17,
+        18,
+        20,
+        21,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        34,
+        37,
+        39,
+        40,
+        42,
+        44,
+        46,
+        50,
+        51,
+        54,
+        55,
+        56,
+        58,
+        59,
+        60,
+        61,
+        63
+      ]
+    },
+    "validation": {
+      "layouts": 10,
+      "turbine_observations": 3776,
+      "layout_ids": [
+        6,
+        10,
+        11,
+        19,
+        22,
+        38,
+        41,
+        48,
+        52,
+        57
+      ]
+    },
+    "calibration": {
+      "layouts": 6,
+      "turbine_observations": 1920,
+      "layout_ids": [
+        0,
+        12,
+        35,
+        45,
+        47,
+        49
+      ]
+    },
+    "test": {
+      "layouts": 10,
+      "turbine_observations": 3840,
+      "layout_ids": [
+        1,
+        2,
+        8,
+        13,
+        14,
+        33,
+        36,
+        43,
+        53,
+        62
+      ]
+    }
+  },
+  "turbine": {
+    "diameter_m": 126.0,
+    "hub_height_m": 90.0,
+    "rated_power_kw": 5000.0,
+    "cut_in_ms": 3.0,
+    "rated_speed_ms": 11.4,
+    "cut_out_ms": 25.0,
+    "ct_below_rated": 0.8,
+    "yaw_power_exponent": 1.88
+  },
+  "teacher_parameters": {
+    "expansion_base": 0.023,
+    "expansion_ti": 0.3,
+    "initial_width": 0.27,
+    "deflection_gain": 0.3
+  },
+  "noise": "speed-ratio common SD=.003 plus independent SD=.004; clipped to [0,1]",
+  "split_unit": "layout",
+  "sample_unit": "turbine within a farm scenario",
+  "dataset_sha256": "2f9ece07432acf13857a214e92bd3a8c8ee2d305725e1850a9e6a64407de1730",
+  "model_sha256": "e895153765161ad3a15ec580b41fb179a4706649d7865fc125300f214584d088",
+  "generation_command": "physcast-yaw demo --out outputs/demo",
+  "scope": "Synthetic Gaussian teacher; no field measurements, CFD or transient wake dynamics.",
+  "raw_artifacts": "Dataset and model are locally reproducible, not bundled in this repository."
+}

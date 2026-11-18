@@ -1,0 +1,19 @@
+{
+  "docs/assets/energy.png": "aabaf06540d902edb223a78da9520fea52433e68c6a5a8ae3385a45395f36956",
+  "docs/assets/energy.svg": "e51a8dfa04db9fdc4625dff1513e3fe599456fcb8540d6267ab0350bcb1496f9",
+  "docs/assets/prediction.png": "bc1f1da4babad6f34dd89c78a8dba26bc2a48aa731266da9cb3eb66eecd21a57",
+  "docs/assets/prediction.svg": "e0d728c35beee0275ed346ca7269c547d2d57c74f8ffc9bca5e4878750445295",
+  "docs/assets/replay.png": "13dfd3163d44b1dab98b94b3d220fbfe6a5cb5ca565ee2686b83c5e1b843ce74",
+  "docs/assets/replay.svg": "e67df014588bca37255b2d7a30bb205014a2ca6a0b538fe1f5f52025023ef88c",
+  "docs/assets/wake-control.png": "af0c784e959a126f250780e6e545f4a0261a6885292f039588f21c2c1739b10f",
+  "docs/assets/wake-control.svg": "fd1e8d27ea2247a027061d0843670e6c3cfe9bbfe871e830a04f91c478256ff7",
+  "docs/benchmark/control_summary.json": "105fbff11529d9b229277680660b687d2ba153754a0b10a59b5b59a8b7d4e22f",
+  "docs/benchmark/data_provenance.json": "24b63e8bc9f2708f662ed529e64f29f7049281ecae9bc93bee28f8f386f6580b",
+  "docs/benchmark/manifest.json": "7bc845266be09d3ce8098469c0849133936ec645db969eccf93ed48675f9c160",
+  "docs/benchmark/metrics.json": "3a986851a3342f24c03b1d19a194527b42eba26065e3f4558574660e6c4b2efc",
+  "docs/benchmark/predictions.csv": "fff5f3ad15a78e45bef79888cff528aef36790ae876e36dd550c230e6113b377",
+  "docs/benchmark/replay.csv": "14e34f26d12bc72048b67ea5a590b40bae8d9a6217de4a4bc24dc0e2b8947cd9",
+  "docs/benchmark/static_comparison.json": "ef2a96b6866e6bb950e79f56f038fd3e0dc31b3aeea894f5a7e8664fdd052306",
+  "docs/benchmark/training.json": "f7c68de1c58ee7dc7712eaea21d1fa6d3f09deb616fbefdfe3968a53f5e791b7",
+  "docs/benchmark/wind.csv": "4338dc6327bcc9b329916467e75304654c95c4ba03ec93658bb44c0bbf717ad7"
+}

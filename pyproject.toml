@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "physcast-yaw"
+version = "0.1.0"
+description = "Physics-guided neural wake prediction and constrained wind-farm yaw control"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "rainbow鱼"}]
+dependencies = ["numpy>=1.26,<3", "torch>=2.6,<3", "matplotlib>=3.8,<4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.9", "build>=1.2"]
+app = ["streamlit>=1.40,<2"]
+
+[project.scripts]
+physcast-yaw = "physcast_yaw.cli:main"
+
+[project.urls]
+Repository = "https://github.com/rainbowyuyu/PhysCast-Yaw"
+Issues = "https://github.com/rainbowyuyu/PhysCast-Yaw/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 105
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

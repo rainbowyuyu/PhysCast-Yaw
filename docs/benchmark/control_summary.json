@@ -1,0 +1,23 @@
+{
+  "aligned": {
+    "energy_kwh": 3851.5661636091695,
+    "gain_vs_alignment_pct": 0.0,
+    "total_heading_travel_deg": 112.23542864692428,
+    "fallback_steps": 0,
+    "infeasible_steps": 0
+  },
+  "physics": {
+    "energy_kwh": 3979.2145242324677,
+    "gain_vs_alignment_pct": 3.314193634510576,
+    "total_heading_travel_deg": 144.54236398948728,
+    "fallback_steps": 0,
+    "infeasible_steps": 0
+  },
+  "ai": {
+    "energy_kwh": 4038.7528295405627,
+    "gain_vs_alignment_pct": 4.860014289771075,
+    "total_heading_travel_deg": 300.6695365183967,
+    "fallback_steps": 0,
+    "infeasible_steps": 0
+  }
+}
