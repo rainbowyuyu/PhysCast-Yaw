@@ -73,19 +73,17 @@ These are explicit demonstration parameters. The implementation uses a simplifie
 
 For the generic turbine, $P_r=5000$ kW, $U_{ci}=3$ m/s, $U_r=11.4$ m/s, $U_{co}=25$ m/s, and $p=1.88$:
 
+Let $\chi(U)$ equal one when $U_{ci}\leq U<U_{co}$ and zero otherwise. The power and thrust-coefficient curves are
+
 ```math
-P(U,\gamma)=\begin{cases}
-P_r\mathrm{clip}\left(\dfrac{U^3-U_{ci}^3}{U_r^3-U_{ci}^3},0,1\right)
-\max(\cos\gamma,0)^p,& U_{ci}\leq U<U_{co},\\
-0,&\text{otherwise}.
-\end{cases}
+P(U,\gamma)=\chi(U)P_r
+\mathrm{clip}\left(\dfrac{U^3-U_{ci}^3}{U_r^3-U_{ci}^3},0,1\right)
+\max(\cos\gamma,0)^p.
 ```
 
 ```math
-C_T(U)=\begin{cases}
-0.8\min\left(1,\left(\dfrac{U_r}{\max(U,0.1)}\right)^2\right),& U_{ci}\leq U<U_{co},\\
-0,&\text{otherwise}.
-\end{cases}
+C_T(U)=0.8\chi(U)
+\min\left(1,\left(\dfrac{U_r}{\max(U,0.1)}\right)^2\right).
 ```
 
 This power curve is continuous at rated speed and applies a cosine yaw loss even above rated speed. Real turbines require appropriate controller-dependent power and thrust curves. See `Turbine.power` and `Turbine.thrust_coefficient`.
