@@ -31,15 +31,14 @@ The included example runs on a CPU and uses synthetic data. No private dataset, 
 ## Architecture
 
 ```mermaid
-flowchart LR
-    A[Layout · inflow · headings] --> B[Gaussian wake prior]
-    B --> C[Shared residual mean networks]
-    C --> D[Physical power curve]
-    C --> E[Conditional residual DDPM]
-    D --> F[Direction scenarios + actuator constraints]
-    F --> G[Candidate search + coordinate refinement]
-    G --> H[Yaw commands + source + status]
-    H --> I[Common evaluation environment]
+flowchart TB
+    A["Layout · inflow · headings"] --> B["Gaussian wake prior"]
+    B --> C["Shared residual mean networks<br/>Rotor-effective wind speed"]
+    C --> D["Power prediction + constrained search<br/>Direction scenarios · movement · yaw rate"]
+    C --> E["Conditional residual DDPM<br/>Calibrated prediction intervals"]
+    D --> F["Yaw commands<br/>Source · constraint status"]
+    F --> G["Common evaluation environment<br/>Power · energy · movement"]
+    classDef default fill:#eef8f6,stroke:#55aaa2,color:#17394d,stroke-width:1.5px
 ```
 
 The **mean ensemble ranks control actions**. The **diffusion model estimates conditional residual uncertainty**. This separation makes prediction accuracy, interval coverage, control benefit, and actuator movement separately inspectable.
